@@ -1,24 +1,24 @@
 function New-Livery {
     if (-not (Test-Path $livloc)) {
         Write-Host "Making Folders"
-        New-Item -Path $livloc\SimObjects\Airplanes\Asobo_XCub_Livery$airfold\MODEL.$airfold -ItemType Directory
-        New-Item -Path $livloc\SimObjects\Airplanes\Asobo_XCub_Livery$airfold\MODEL.AI_$airfold -ItemType Directory
-        New-Item -Path $livloc\SimObjects\Airplanes\Asobo_XCub_Livery$airfold\TEXTURE.$airfold -ItemType Directory
+        New-Item -Path $livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\MODEL.$airfold -ItemType Directory
+        New-Item -Path $livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\MODEL.AI_$airfold -ItemType Directory
+        New-Item -Path $livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\TEXTURE.$airfold -ItemType Directory
     }
 }
 function Move-Files {
     Write-Host "Moving Files"
     $moveddsfile = Get-ChildItem -Path $PSScriptRoot\texture -Filter *.dds
     foreach ($item in $moveddsfile) {
-        Copy-Item $PSScriptRoot\texture\json\$item.json -destination "$livloc\SimObjects\Airplanes\Asobo_XCub_Livery$airfold\TEXTURE.$airfold"
+        Copy-Item $PSScriptRoot\texture\json\$item.json -destination "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\TEXTURE.$airfold"
     }
     Copy-Item $PSScriptRoot\Files\manifest.json $livloc\manifest.json
     Copy-Item $PSScriptRoot\Files\layout.json $livloc\layout.json
-    Copy-Item $PSScriptRoot\Files\aircraft.cfg $livloc\SimObjects\Airplanes\Asobo_XCub_Livery$airfold\aircraft.cfg
-    Copy-Item $PSScriptRoot\Files\model.cfg $livloc\SimObjects\Airplanes\Asobo_XCub_Livery$airfold\MODEL.$airfold\model.cfg
-    Copy-Item $PSScriptRoot\Files\model.cfg $livloc\SimObjects\Airplanes\Asobo_XCub_Livery$airfold\MODEL.AI_$airfold\model.cfg
-    Copy-Item $PSScriptRoot\Files\texture.cfg $livloc\SimObjects\Airplanes\Asobo_XCub_Livery$airfold\TEXTURE.$airfold\texture.cfg
-    Get-ChildItem -path $PSScriptRoot\texture -filter *.dds | Copy-Item -destination "$livloc\SimObjects\Airplanes\Asobo_XCub_Livery$airfold\TEXTURE.$airfold"
+    Copy-Item $PSScriptRoot\Files\aircraft.cfg $livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\aircraft.cfg
+    Copy-Item $PSScriptRoot\Files\model.cfg $livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\MODEL.$airfold\model.cfg
+    Copy-Item $PSScriptRoot\Files\model.cfg $livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\MODEL.AI_$airfold\model.cfg
+    Copy-Item $PSScriptRoot\Files\texture.cfg $livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\TEXTURE.$airfold\texture.cfg
+    Get-ChildItem -path $PSScriptRoot\texture -filter *.dds | Copy-Item -destination "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\TEXTURE.$airfold"
 }
 
 function Update-ManifestJson {
@@ -34,24 +34,24 @@ function Update-ManifestJson {
 function Update-AircraftConfig {
     # Im sure there is a better way, but this worked.
     Write-Host "Updating Aircraft.cfg"
-    $file = Get-content -path "$livloc\SimObjects\Airplanes\Asobo_XCub_Livery$airfold\aircraft.cfg"
+    $file = Get-content -path "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\aircraft.cfg"
     $newfile = $file -replace 'AIRFOLD" ', ("$airfold" + '" ')
-    $newfile | Set-content -path "$livloc\SimObjects\Airplanes\Asobo_XCub_Livery$airfold\aircraft.cfg"
-    $file = Get-content -path "$livloc\SimObjects\Airplanes\Asobo_XCub_Livery$airfold\aircraft.cfg"
+    $newfile | Set-content -path "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\aircraft.cfg"
+    $file = Get-content -path "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\aircraft.cfg"
     $newfile = $file -replace 'AIRLINE" ', ("$airline" + '" ')
-    $newfile | Set-content -path "$livloc\SimObjects\Airplanes\Asobo_XCub_Livery$airfold\aircraft.cfg"
-    $file = Get-content -path "$livloc\SimObjects\Airplanes\Asobo_XCub_Livery$airfold\aircraft.cfg"
+    $newfile | Set-content -path "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\aircraft.cfg"
+    $file = Get-content -path "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\aircraft.cfg"
     $newfile = $file -replace 'PERSONA" ', ("$name" + '" ')
-    $newfile | Set-content -path "$livloc\SimObjects\Airplanes\Asobo_XCub_Livery$airfold\aircraft.cfg"
-    $file = Get-content -path "$livloc\SimObjects\Airplanes\Asobo_XCub_Livery$airfold\aircraft.cfg"
+    $newfile | Set-content -path "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\aircraft.cfg"
+    $file = Get-content -path "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\aircraft.cfg"
     $newfile = $file -replace 'ATCID" ', ("$atcid" + '" ')
-    $newfile | Set-content -path "$livloc\SimObjects\Airplanes\Asobo_XCub_Livery$airfold\aircraft.cfg"
-    $file = Get-content -path "$livloc\SimObjects\Airplanes\Asobo_XCub_Livery$airfold\aircraft.cfg"
+    $newfile | Set-content -path "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\aircraft.cfg"
+    $file = Get-content -path "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\aircraft.cfg"
     $newfile = $file -replace 'ICAO" ', ("$icao" + '" ')
-    $newfile | Set-content -path "$livloc\SimObjects\Airplanes\Asobo_XCub_Livery$airfold\aircraft.cfg"
-    $file = Get-content -path "$livloc\SimObjects\Airplanes\Asobo_XCub_Livery$airfold\aircraft.cfg"
+    $newfile | Set-content -path "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\aircraft.cfg"
+    $file = Get-content -path "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\aircraft.cfg"
     $newfile = $file -replace '##" ', ("$flightnumber" + '" ')
-    $newfile | Set-content -path "$livloc\SimObjects\Airplanes\Asobo_XCub_Livery$airfold\aircraft.cfg"
+    $newfile | Set-content -path "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\aircraft.cfg"
 }
 
 function Convert-ToDDS {
@@ -111,7 +111,7 @@ function Get-PackageLoc {
     $usercfgloc = "$apploc\LocalCache\UserCfg.opt"
     $maybe = Get-Content $usercfgloc | Where-Object {$_ -match "[a-zA-Z]\:\\"}
     $finally = $maybe.Split(" ")
-    $script:livloc = $finally[1].Replace('"',"") + "\Community" + "\$name-xcub-livery-$airfold"
+    $script:livloc = $finally[1].Replace('"',"") + "\Community" + "\$name-savage-cub-livery-$airfold"
 }
 
 # Form boxes working on making it one box.
