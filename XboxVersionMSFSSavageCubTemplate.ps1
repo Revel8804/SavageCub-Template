@@ -56,7 +56,7 @@ function Update-AircraftConfig {
     $newfile = $file -replace '##" ', ("$flightnumber" + '" ')
     $newfile | Set-content -path "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\aircraft.cfg"
     $file = Get-content -path "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\aircraft.cfg"
-    $newfile = $file -replace 'AIRFOLD Livery" ', ("$airfold" + 'Livery')
+    $newfile = $file -replace 'AIRFOLD Livery" ', ("$airfold" + ' Livery')
     $newfile | Set-content -path "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\aircraft.cfg"
 }
 
