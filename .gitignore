@@ -1,3 +1,8 @@
 *.blend1
+NewTextures/*.png
+NewTextures/*.dds
+/*.exe
+/__pycache__
+/output
+/file_version_info.txt
 *.blend
-__pycache__
