@@ -97,7 +97,7 @@ function Open-Blender {
 }
 
 function Expand-BlenderFile {
-    Write-Host "Expanding SavageCub.blend"
+    Write-Host "Expanding SavageCub.zip"
     Expand-Archive "$PSScriptRoot\SavageCub.zip" -DestinationPath $PSScriptRoot -Force
     $timechange = Get-ChildItem -path $PSScriptRoot\texture -recurse -ErrorAction SilentlyContinue | Where-Object {! $_.PSIsContainer}
     foreach ($item in $timechange) {
