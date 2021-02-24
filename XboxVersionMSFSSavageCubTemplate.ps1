@@ -1,27 +1,30 @@
 function New-Livery {
     if (-not (Test-Path $livloc)) {
         Write-Host "Making Folders"
-        New-Item -Path $livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\MODEL.$airfold -ItemType Directory
-        New-Item -Path $livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\MODEL.AI_$airfold -ItemType Directory
-        New-Item -Path $livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\TEXTURE.$airfold -ItemType Directory
-        New-Item -Path $livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\PANEL.$airfold -ItemType Directory
+        New-Item -Path "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\MODEL" -ItemType Directory
+        New-Item -Path "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\MODEL.AI_$airfold" -ItemType Directory
+        New-Item -Path "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\TEXTURE" -ItemType Directory
+        New-Item -Path "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\PANEL" -ItemType Directory
     }
 }
 function Move-Files {
     Write-Host "Moving Files"
     $moveddsfile = Get-ChildItem -Path $PSScriptRoot\texture -Filter *.dds
     foreach ($item in $moveddsfile) {
-        Copy-Item $PSScriptRoot\texture\json\$item.json -destination "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\TEXTURE.$airfold"
+        Copy-Item "$PSScriptRoot\texture\json\$item.json" -destination "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\TEXTURE"
     }
-    Copy-Item $PSScriptRoot\Files\model.cfg $livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\PANEL.$airfold\PANEL.CFG
-    Copy-Item $PSScriptRoot\Files\model.cfg $livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\PANEL.$airfold\PANEL.XML
-    Copy-Item $PSScriptRoot\Files\manifest.json $livloc\manifest.json
-    Copy-Item $PSScriptRoot\Files\layout.json $livloc\layout.json
-    Copy-Item $PSScriptRoot\Files\aircraft.cfg $livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\aircraft.cfg
-    Copy-Item $PSScriptRoot\Files\model.cfg $livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\MODEL.$airfold\model.cfg
-    Copy-Item $PSScriptRoot\Files\model.cfg $livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\MODEL.AI_$airfold\model.cfg
-    Copy-Item $PSScriptRoot\Files\texture.cfg $livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\TEXTURE.$airfold\texture.cfg
-    Get-ChildItem -path $PSScriptRoot\texture -filter *.dds | Copy-Item -destination "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\TEXTURE.$airfold"
+    Copy-Item "$PSScriptRoot\Files\model.cfg" "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\PANEL\PANEL.CFG"
+    Copy-Item "$PSScriptRoot\Files\model.cfg" "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\PANEL\PANEL.XML"
+    Copy-Item "$PSScriptRoot\Files\manifest.json" "$livloc\manifest.json"
+    Copy-Item "$PSScriptRoot\Files\layout.json" "$livloc\layout.json"
+    Copy-Item "$PSScriptRoot\Files\aircraft.cfg" "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\aircraft.cfg"
+    Copy-Item "$PSScriptRoot\Files\model.cfg" "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\MODEL\model.cfg"
+    Copy-Item "$PSScriptRoot\Files\model.cfg" "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\MODEL.AI_$airfold\model.cfg"
+    Copy-Item "$PSScriptRoot\Files\texture.cfg" "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\TEXTURE\texture.cfg"
+    Get-ChildItem -path "$PSScriptRoot\texture" -filter *.dds | Copy-Item -destination "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\TEXTURE"
+    Rename-Item "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\TEXTURE" "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\TEXTURE.$airfold"
+    Rename-Item "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\PANEL" "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\PANEL.$airfold"
+    Rename-Item "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\MODEL" "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\MODEL.$airfold"
 }
 
 function Update-ManifestJson {
