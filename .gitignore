@@ -6,3 +6,6 @@ NewTextures/*.dds
 /output
 /file_version_info.txt
 *.blend
+/Files/manifest.xml
+/Files/file_version_info.txt
+/Files/plane.ico
