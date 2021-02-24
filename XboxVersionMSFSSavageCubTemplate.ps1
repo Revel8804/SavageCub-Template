@@ -140,7 +140,7 @@ Get-PackageLoc
 Install-NeededPrograms
 Expand-BlenderFile
 Open-Blender
-New-Livery -livloc $livloc -airfold $airfold
+New-Livery
 Convert-ToDDS
 Move-Files
 Update-ManifestJson
