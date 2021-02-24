@@ -20,7 +20,7 @@ function Move-Files {
     Copy-Item "$PSScriptRoot\Files\aircraft.cfg" "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\aircraft.cfg"
     Copy-Item "$PSScriptRoot\Files\model.cfg" "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\MODEL.$airfold\model.cfg"
     Copy-Item "$PSScriptRoot\Files\model.cfg" "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\MODEL.AI_$airfold\model.cfg"
-    Copy-Item "$PSScriptRoot\Files\texture.cfg" "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\TEXTURE\texture.cfg"
+    Copy-Item "$PSScriptRoot\Files\texture.cfg" "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\TEXTURE.$airfold\texture.cfg"
     Get-ChildItem -path "$PSScriptRoot\texture" -filter *.dds | Copy-Item -destination "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\TEXTURE.$airfold"
 }
 
