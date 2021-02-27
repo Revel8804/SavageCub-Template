@@ -13,8 +13,8 @@ function Move-Files {
     foreach ($item in $moveddsfile) {
         Copy-Item "$PSScriptRoot\texture\json\$item.json" -destination "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\TEXTURE.$airfold"
     }
-    Copy-Item "$PSScriptRoot\Files\model.cfg" "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\PANEL.$airfold\PANEL.CFG"
-    Copy-Item "$PSScriptRoot\Files\model.cfg" "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\PANEL.$airfold\PANEL.XML"
+    Copy-Item "$PSScriptRoot\Files\PANEL.CFG" "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\PANEL.$airfold\PANEL.CFG"
+    Copy-Item "$PSScriptRoot\Files\PANEL.XML" "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\PANEL.$airfold\PANEL.XML"
     Copy-Item "$PSScriptRoot\Files\manifest.json" "$livloc\manifest.json"
     Copy-Item "$PSScriptRoot\Files\layout.json" "$livloc\layout.json"
     Copy-Item "$PSScriptRoot\Files\aircraft.cfg" "$livloc\SimObjects\Airplanes\Asobo_savage-cub_Livery$airfold\aircraft.cfg"
